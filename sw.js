@@ -1,5 +1,5 @@
-const CACHE='221b-v2';
-const FILES=["./", "icon-180.png", "icon-192.png", "icon-512.png", "index.html", "manifest.webmanifest", "page-cabinet.html", "page-casebook.html", "page-casefile.html", "page-desk.html", "page-postcards.html", "page-records.html", "page-sky.html"];
+const CACHE='casebook-v2';
+const FILES=["./", "icon-180.png", "icon-192.png", "icon-512.png", "index.html", "manifest.webmanifest"];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{
